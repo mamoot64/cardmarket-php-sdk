@@ -84,7 +84,7 @@ final class AuthenticationHeaderBuilder {
     $this->parameters['oauth_signature'] = self::createOAuthSignature();
 
     $header = "OAuth ";
-    $headerParams = array();
+    $headerParams = [];
     foreach ($this->parameters as $key => $value) {
       $headerParams[] = $key . "=\"" . $value . "\"";
     }
@@ -94,7 +94,7 @@ final class AuthenticationHeaderBuilder {
   }
 
   /**
-   * Create the O-Auth signature based on HMAC-SHA1 algorithm.
+   * Create the OAuth signature based on HMAC-SHA1 algorithm.
    *
    * @return string
    */
@@ -112,7 +112,7 @@ final class AuthenticationHeaderBuilder {
   }
 
   /**
-   * Encode each parameters for the O-Auth signature.
+   * Encode each parameters and sort for the OAuth signature.
    *
    * @return array
    */
@@ -126,11 +126,13 @@ final class AuthenticationHeaderBuilder {
       }
     }
 
+    ksort($encodedParams);
+
     return $encodedParams;
   }
 
   /**
-   * Merge and sort needed headers params with query string params
+   * Merge the needed headers params with query string params
    *
    * @return array
    */
@@ -138,7 +140,7 @@ final class AuthenticationHeaderBuilder {
   {
     $params = [
       'realm' => self::getUrlCall(),
-      'oauth_consumer_key' => $this->credentials['access_secret'],
+      'oauth_consumer_key' => $this->credentials['application_token'],
       'oauth_token' => $this->credentials['access_token'],
       'oauth_nonce' => $this->nonce,
       'oauth_timestamp' => $this->timestamp,
@@ -147,8 +149,6 @@ final class AuthenticationHeaderBuilder {
     ];
 
     $params = array_merge($params, self::extractQueryParams());
-
-    ksort($params);
 
     return $params;
   }

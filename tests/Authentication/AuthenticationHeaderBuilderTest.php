@@ -37,10 +37,10 @@ final class AuthenticationHeaderBuilderTest extends TestCase {
 
   public function testAuthenticationHeaderBuilder()
   {
-    $this->assertSame('OAuth maxResults="10", oauth_consumer_key="access_secret", oauth_nonce="5d64e5947f376", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1566893460", oauth_token="access_token", oauth_version="1.0", realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", start="0", oauth_signature="c2ALPPJmxlHWgU6iegGS7pSTnQA="',
+    $this->assertSame('OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", start="0", maxResults="10", oauth_signature="95ULTYYDOl+t35olPzaGGymppuE="',
       $this->authenticationHeaderBuilderWithQueryParams->getAuthorisationHeaderValue());
 
-    $this->assertSame('OAuth oauth_consumer_key="access_secret", oauth_nonce="5d64e5947f376", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1566893460", oauth_token="access_token", oauth_version="1.0", realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_signature="2IUxWXvDv7/fDjYpKzXC5/fZQUs="',
+    $this->assertSame('OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", oauth_signature="+EXDfr5yax3WoXLq+NNQgvxpHME="',
       $this->authenticationHeaderBuilderWithoutQueryParams->getAuthorisationHeaderValue());
   }
 
@@ -52,11 +52,11 @@ final class AuthenticationHeaderBuilderTest extends TestCase {
     // Use Reflection to set immutable timestamp & nonce
     $reflection = new \ReflectionProperty(AuthenticationHeaderBuilder::class, 'timestamp');
     $reflection->setAccessible(TRUE);
-    $reflection->setValue($authenticationHeaderBuilder, '1566893460');
+    $reflection->setValue($authenticationHeaderBuilder, '1567057960');
 
     $reflection = new \ReflectionProperty(AuthenticationHeaderBuilder::class, 'nonce');
     $reflection->setAccessible(TRUE);
-    $reflection->setValue($authenticationHeaderBuilder, '5d64e5947f376');
+    $reflection->setValue($authenticationHeaderBuilder, '5d676828e6fe7');
 
     return $authenticationHeaderBuilder;
   }
