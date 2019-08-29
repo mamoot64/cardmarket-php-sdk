@@ -10,13 +10,11 @@ use Mamoot\CardMarket\CardMarketException;
  */
 final class CardmarketIsGoneException extends \RuntimeException implements CardMarketException
 {
-
-  public function __construct(
-    string $message = "",
-    int $code = 0,
-    \Throwable $previous = NULL
-  ) {
-    parent::__construct("Carmarket API seems to be not available.", $code, $previous);
-  }
-
+    public function __construct(
+        string $message = '',
+        int $code = 0,
+        \Throwable $previous = null
+    ) {
+        parent::__construct('Carmarket API seems to be not available.', $code, $previous);
+    }
 }
