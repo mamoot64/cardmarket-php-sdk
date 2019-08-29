@@ -5,7 +5,8 @@ namespace Mamoot\CardMarket\Resources\MarketPlaceInformation;
 
 use Mamoot\CardMarket\Resources\HttpCaller;
 
-class ExpansionsResource extends HttpCaller {
+class ExpansionsResource extends HttpCaller
+{
 
   /**
    * Returns all expansions with single cards for the specified game.
@@ -20,4 +21,16 @@ class ExpansionsResource extends HttpCaller {
     return $this->get(sprintf('/games/%d/expansions', $gameId));
   }
 
+  /**
+   * Returns all single cards for the specified expansion.
+   *
+   * @param int $expansionId
+   *
+   * @return array
+   * @throws \Exception
+   */
+  public function getCardsListByExpansion(int $expansionId): array
+  {
+    return $this->get(sprintf('/expansions/%d/singles', $expansionId));
+  }
 }

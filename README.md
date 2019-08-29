@@ -38,13 +38,26 @@ $cardmarket->games()->getGamesList());
 
 Retrieve all expansions by game.   
  
-
 ```php
 // All pokemon expansions
 $cardmarket->expansions()->getExpansionsListByGame(6);
 
 // All Magic The Gathering expansions
 $cardmarket->expansions()->getExpansionsListByGame(1);
+```
+
+Retrieve all cards for a given expansion.
+
+```php
+// All Pokemon cards of the Jungle expansion
+$cardmarket->expansions()->getCardsListByExpansion(1525);
+```
+
+Retrieve the details and price guide of a single card   
+
+```php
+// Cards details for "Electrode (Holo) - Jungle expansion"
+$cardmarket->cards()->getCardsDetails(273799);
 ```
 
 ### Execute test suite

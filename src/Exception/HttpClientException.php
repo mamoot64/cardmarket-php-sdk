@@ -2,6 +2,11 @@
 use Mamoot\Cardmarket\CardMarketException;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Class HttpClientException
+ *
+ * https://api.cardmarket.com/ws/documentation/API_2.0:Response_Codes
+ */
 final class HttpClientException extends \RuntimeException implements CardMarketException
 {
   /**
