@@ -24,4 +24,9 @@ class Cardmarket {
   {
     return new Resources\MarketPlaceInformation\ExpansionsResource($this->httpClientCreator);
   }
+
+  public function cards()
+  {
+    return new Resources\MarketPlaceInformation\ProductsResource($this->httpClientCreator);
+  }
 }
