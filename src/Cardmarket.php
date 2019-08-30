@@ -4,9 +4,25 @@ declare(strict_types=1);
 namespace Mamoot\CardMarket;
 
 use Mamoot\CardMarket\HttpClient\HttpClientCreator;
+use Mamoot\CardMarket\Resources\MarketPlaceInformation\ExpansionsResource;
+use Mamoot\CardMarket\Resources\MarketPlaceInformation\GamesResource;
+use Mamoot\CardMarket\Resources\MarketPlaceInformation\ProductsResource;
+use Spatie\Macroable\Macroable;
 
+/**
+ * Class Cardmarket
+ *
+ * @package Mamoot\CardMarket
+ *
+ * @author Nicolas Perussel <nicolas.perussel@gmail.com>
+ */
 class Cardmarket
 {
+    use Macroable;
+
+    /**
+     * @var HttpClientCreator
+     */
     private $httpClientCreator;
 
     public function __construct(HttpClientCreator $httpClientCreator)
@@ -14,18 +30,47 @@ class Cardmarket
         $this->httpClientCreator = $httpClientCreator;
     }
 
-    public function games()
+    public function games(): GamesResource
     {
-        return new Resources\MarketPlaceInformation\GamesResource($this->httpClientCreator);
+        return new GamesResource($this->httpClientCreator);
     }
 
-    public function expansions()
+    public function expansions(): ExpansionsResource
     {
-        return new Resources\MarketPlaceInformation\ExpansionsResource($this->httpClientCreator);
+        return new ExpansionsResource($this->httpClientCreator);
     }
 
-    public function cards()
+    public function cards(): ProductsResource
     {
-        return new Resources\MarketPlaceInformation\ProductsResource($this->httpClientCreator);
+        return new ProductsResource($this->httpClientCreator);
+    }
+
+    /**
+     * Register custom resources on Cardmarket wrapper.
+     *
+     * @param string $methodName
+     * @param string $fqcn
+     */
+    public function registerResources(string $methodName, string $fqcn): void
+    {
+        if (isset($this->getDefaultResources()[$methodName])) {
+            throw new \LogicException(sprintf("You can't override default resources (%s)", implode(', ', array_values($this->getDefaultResources()))));
+        }
+
+        $httpClientCreator = $this->httpClientCreator;
+
+        self::macro($methodName, function () use ($httpClientCreator, $fqcn) {
+            return new $fqcn($httpClientCreator);
+        });
+    }
+
+    /**
+     * Default methods names to access Cardmarket Resources.
+     *
+     * @return array
+     */
+    private function getDefaultResources(): array
+    {
+        return ["games", "expansions", "cards"];
     }
 }
