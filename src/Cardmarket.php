@@ -53,7 +53,8 @@ class Cardmarket
      */
     public function registerResources(string $methodName, string $fqcn): void
     {
-        if (isset($this->getDefaultResources()[$methodName])) {
+
+        if (in_array($methodName, $this->getDefaultResources())) {
             throw new \LogicException(sprintf("You can't override default resources (%s)", implode(', ', array_values($this->getDefaultResources()))));
         }
 
