@@ -135,7 +135,7 @@ final class HttpCallerTest extends TestCase
         );
 
         $this->expectException(HttpClientException::class);
-        $this->expectExceptionMessage('You have rich your maximum calls per day.');
+        $this->expectExceptionMessage('You have reached your maximum calls per day.');
         $abtractHttpCaller->get('/too-many-requests');
     }
 
