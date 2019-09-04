@@ -56,6 +56,6 @@ final class HttpClientException extends \RuntimeException implements CardMarketE
 
     public static function tooManyRequests()
     {
-        return new self('You have rich your maximum calls per day.', 429);
+        return new self('You have reached your maximum calls per day.', 429);
     }
 }
