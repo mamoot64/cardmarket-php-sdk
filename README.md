@@ -2,6 +2,8 @@
 
 :fire: **WORK IN PROGRESS**
 
+[![Build Status](https://travis-ci.org/mamoot64/cardmarket-php-sdk.svg?branch=develop)](https://travis-ci.org/mamoot64/cardmarket-php-sdk)
+
 Installation
 ------------
 
