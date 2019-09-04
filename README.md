@@ -11,7 +11,7 @@ Use [Composer](http://getcomposer.org/) to install the package:
 $ composer require mamoot/cardmarket-php-sdk
 ```
 
-Usage and example
+Usage and examples
 -------
 
 ### Init the Cardmarket client
@@ -60,6 +60,39 @@ Retrieve the details and price guide of a single card
 $cardmarket->cards()->getCardsDetails(273799);
 ```
 
+### Add your custom Resources
+
+It's not really a part of the Cardmarket SDK but if want to organize your work, it can be a good place!
+
+````php
+namespace Vendor\MyNamespace;
+
+use Mamoot\CardMarket\Resources\HttpCaller;
+
+class MyPokemonResource extends HttpCaller
+{
+    public function getOrderedExpansions(): array
+    {
+        // do stuff
+    }
+}
+````
+
+```php
+use Vendor\MyNamespace\MyPokemonResource;
+
+$cardmarket = new Cardmarket($httpCreator);
+$cardmarket->registerResources('pokemon', MyPokemonResource::class);
+```
+
+Now you can manipulate your resource like the default provided :
+
+```php
+$cardmarket->pokemon()->getOrderedExpansions();
+```
+
+> You can't redefined default resources
+
 ### Execute test suite
 
 If you want to run the tests you should run the following commands: 
@@ -67,11 +100,11 @@ If you want to run the tests you should run the following commands:
 ```terminal
 git clone git@github.com:mamoot64/cardmarket-php-sdk.git
 cd cardmarket-php-sdk
-composer update
-composer run test
+composer install
+composer test
 ```
 
 If you want to generate coverage with HTML report, run:
 ```terminal
-composer run test-coverage-html
+composer test-coverage-html
 ```
