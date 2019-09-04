@@ -1,0 +1,21 @@
+{
+  "game": [
+    {
+      "idGame": 1,
+      "name": "Magic the Gathering",
+      "abbreviation": "MtG",
+      "links": {}
+    },
+    {
+      "idGame": 2,
+      "name": "World of Warcraft TCG",
+      "abbreviation": "WoW",
+      "links": {}
+    }
+  ],
+  "links": [],
+  "api": {
+    "request-limit-max": 5000,
+    "request-limit-count": 10
+  }
+}

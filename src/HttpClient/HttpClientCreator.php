@@ -7,7 +7,7 @@ use Mamoot\CardMarket\Exception\HttpClientNotConfiguredException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class HttpClientCreator
+class HttpClientCreator
 {
     const API_URL = 'https://api.cardmarket.com/ws/v2.0/output.json';
 

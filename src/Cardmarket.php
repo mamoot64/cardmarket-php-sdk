@@ -7,6 +7,8 @@ use Mamoot\CardMarket\HttpClient\HttpClientCreator;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\ExpansionsResource;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\GamesResource;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\ProductsResource;
+use Mamoot\CardMarket\Resources\StockManagement\StockInShoppingCartsResource;
+use Mamoot\CardMarket\Resources\StockManagement\StockResource;
 use Spatie\Macroable\Macroable;
 
 /**
@@ -45,6 +47,16 @@ class Cardmarket
         return new ProductsResource($this->httpClientCreator);
     }
 
+    public function stock(): StockResource
+    {
+        return new StockResource($this->httpClientCreator);
+    }
+
+    public function stockInShoppingCarts(): StockInShoppingCartsResource
+    {
+        return new StockInShoppingCartsResource($this->httpClientCreator);
+    }
+
     /**
      * Register custom resources on Cardmarket wrapper.
      *
@@ -53,7 +65,6 @@ class Cardmarket
      */
     public function registerResources(string $methodName, string $fqcn): void
     {
-
         if (in_array($methodName, $this->getDefaultResources())) {
             throw new \LogicException(sprintf("You can't override default resources (%s)", implode(', ', array_values($this->getDefaultResources()))));
         }
@@ -72,6 +83,6 @@ class Cardmarket
      */
     private function getDefaultResources(): array
     {
-        return ["games", "expansions", "cards"];
+        return ["games", "expansions", "cards", "stock", "stockInShoppingCarts"];
     }
 }

@@ -1,0 +1,26 @@
+{
+  "expansion": [
+    {
+      "idExpansion": 1469,
+      "enName": "Born of the Gods",
+      "localization": [
+        {
+          "name": "Born of the Gods",
+          "idLanguage": 1,
+          "languageName": "English"
+        }
+      ],
+      "abbreviation": "BNG",
+      "icon": 246,
+      "releaseDate": "2099-02-07T00:00:00+0100",
+      "isReleased": false,
+      "idGame": 1,
+      "links": {}
+    }
+  ],
+  "links": [],
+  "api": {
+    "request-limit-max": 5000,
+    "request-limit-count": 10
+  }
+}

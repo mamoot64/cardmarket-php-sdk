@@ -5,7 +5,14 @@ namespace Mamoot\CardMarket\Resources\MarketPlaceInformation;
 
 use Mamoot\CardMarket\Resources\HttpCaller;
 
-class ExpansionsResource extends HttpCaller
+/**
+ * Class ExpansionsResource
+ *
+ * @package Mamoot\CardMarket\Resources\MarketPlaceInformation
+ *
+ * @author Nicolas Perussel <nicolas.perussel@gmail.com>
+ */
+final class ExpansionsResource extends HttpCaller
 {
     /**
      * Returns all expansions with single cards for the specified game.

@@ -5,11 +5,20 @@ namespace Mamoot\CardMarket\Resources;
 
 use Mamoot\CardMarket\Authentication\AuthenticationHeaderBuilder;
 use Mamoot\CardMarket\Exception\CardmarketIsGoneException;
+use Mamoot\CardMarket\Exception\HttpClientException;
+use Mamoot\CardMarket\Exception\HttpServerException;
 use Mamoot\CardMarket\Exception\UnknownErrorException;
 use Mamoot\CardMarket\HttpClient\HttpClientCreator;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * Class HttpCaller
+ *
+ * @package Mamoot\CardMarket\Resources
+ *
+ * @author Nicolas Perussel <nicolas.perussel@gmail.com>
+ */
 abstract class HttpCaller
 {
     /**
@@ -99,15 +108,15 @@ abstract class HttpCaller
           case 400:
             throw HttpClientException::badRequest($response);
           case 401:
-            throw HttpClientException::unauthorized($response);
+            throw HttpClientException::unauthorized();
           case 403:
-            throw HttpClientException::forbidden($response);
+            throw HttpClientException::forbidden();
           case 404:
-            throw HttpClientException::notFound($response);
+            throw HttpClientException::notFound();
           case 429:
-            throw HttpClientException::tooManyRequests($response);
+            throw HttpClientException::tooManyRequests();
           case 500 <= $statusCode:
-            throw HttpServerException::serverError($statusCode);
+            throw new HttpServerException($statusCode);
           default:
             throw new UnknownErrorException();
         }
