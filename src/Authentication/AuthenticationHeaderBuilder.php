@@ -59,8 +59,12 @@ final class AuthenticationHeaderBuilder
      */
     private $credentials;
 
-    public function __construct(HttpClientCreator $httpClientCreator, $url, $method = 'GET')
+    public function __construct(HttpClientCreator $httpClientCreator, string $url, string $method = 'GET')
     {
+        if (!is_array(parse_url($url))) {
+            throw new \LogicException(sprintf("String \"%s\" is malformed and can't be parsed.", $url));
+        }
+
         $this->nonce = uniqid();
         $this->timestamp = time();
         $this->signatureMethod = 'HMAC-SHA1';
@@ -120,7 +124,7 @@ final class AuthenticationHeaderBuilder
 
         foreach ($this->parameters as $key => $value) {
             if ('realm' !== $key) {
-                $encodedParams[rawurlencode($key)] = rawurlencode($value);
+                $encodedParams[rawurlencode((string)$key)] = rawurlencode((string)$value);
             }
         }
 

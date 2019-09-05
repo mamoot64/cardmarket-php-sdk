@@ -17,11 +17,13 @@ final class StockResource extends HttpCaller
     /**
      * Retrieves all articles in the authenticated user's stock.
      *
+     * @param int $start
+     *
      * @return array
      * @throws \Exception
      */
-    public function getStock(): array
+    public function getStock(int $start = 1): array
     {
-        return $this->get('/stock');
+        return $this->get(sprintf('/stock/%d', $start));
     }
 }
