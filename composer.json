@@ -28,12 +28,14 @@
         "phpunit/phpunit": "^8.3",
         "symfony/var-dumper": "^4.3",
         "friendsofphp/php-cs-fixer": "^2.15",
-        "dg/bypass-finals": "^1.1"
+        "dg/bypass-finals": "^1.1",
+        "phpstan/phpstan": "^0.11.15"
     },
     "scripts": {
         "lint": "php-cs-fixer fix ./src --rules=@PSR2 --diff --dry-run",
         "lint-fix": "php-cs-fixer fix ./src --rules=@PSR2",
         "test": "vendor/bin/phpunit",
+        "stan": "vendor/bin/phpstan analyse src --level 7",
         "test-coverage": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml",
         "test-coverage-html": "vendor/bin/phpunit --coverage-text --coverage-html=build"
     }
