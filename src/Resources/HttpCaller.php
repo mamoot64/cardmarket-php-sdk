@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace Mamoot\CardMarket\Resources;
 
 use Mamoot\CardMarket\Authentication\AuthenticationHeaderBuilder;
-use Mamoot\CardMarket\Exception\CardmarketIsGoneException;
 use Mamoot\CardMarket\Exception\HttpClientException;
 use Mamoot\CardMarket\Exception\HttpServerException;
 use Mamoot\CardMarket\Exception\UnknownErrorException;
 use Mamoot\CardMarket\HttpClient\HttpClientCreator;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -41,7 +43,10 @@ abstract class HttpCaller
      * @param string $uri
      *
      * @return array
-     * @throws \Exception
+     * @throws \Mamoot\CardMarket\Exception\UnknownErrorException
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
     protected function get(string $uri): array
     {
@@ -51,11 +56,11 @@ abstract class HttpCaller
             $response = $this->httpClient->request('GET', $url, [
               'headers' => self::getAuthorizationHeader($url, 'GET'),
             ]);
-        } catch (CardmarketIsGoneException $exception) {
+
+            return self::processJsonResponse($response);
+        } catch (UnknownErrorException | DecodingExceptionInterface | HttpExceptionInterface | TransportExceptionInterface $exception) {
             throw $exception;
         }
-
-        return self::processJsonResponse($response);
     }
 
     /**
@@ -75,30 +80,56 @@ abstract class HttpCaller
         ];
     }
 
+
     /**
-     * @param ResponseInterface $response
+     * @param \Symfony\Contracts\HttpClient\ResponseInterface $response
      *
-     * @return string
-     * @throws \Exception
+     * @return array
+     * @throws \Mamoot\CardMarket\Exception\UnknownErrorException
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
     protected function processJsonResponse(ResponseInterface $response): array
     {
-        if (200 !== $response->getStatusCode() && 201 !== $response->getStatusCode()) {
+        if ($response->getStatusCode() !== 200
+            && $response->getStatusCode() !== 201
+            && $response->getStatusCode() !== 206
+        ) {
             $this->handleErrors($response);
         }
 
-        return array_merge($response->toArray(), [
-          'api' => [
-            'request-limit-max' => $response->getHeaders()['x-request-limit-max'][0],
-            'request-limit-count' => $response->getHeaders()['x-request-limit-count'][0],
-          ],
-        ]);
+        try {
+            $decodedContent = $response->toArray();
+
+            return array_merge($decodedContent, $this->getApiLimitFromResponseHeaders($response->getHeaders(false)));
+        } catch (TransportExceptionInterface | HttpExceptionInterface | HttpServerException | DecodingExceptionInterface $exception) {
+            throw $exception;
+        }
     }
 
     /**
-     * Throw the correct exception for this error.
+     * Get Cardmarket  API requests calls number.
      *
-     * @throws \Exception
+     * @param array $headers
+     *
+     * @return array
+     */
+    private function getApiLimitFromResponseHeaders(array $headers): array
+    {
+        return [
+          'api' => [
+              'request-limit-max' => $headers['x-request-limit-max'][0],
+              'request-limit-count' => $headers['x-request-limit-count'][0],
+            ]
+        ];
+    }
+
+    /**
+     * @param \Symfony\Contracts\HttpClient\ResponseInterface $response
+     *
+     * @throws \Mamoot\CardMarket\Exception\UnknownErrorException
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
     protected function handleErrors(ResponseInterface $response): void
     {

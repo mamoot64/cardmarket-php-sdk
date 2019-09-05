@@ -10,11 +10,8 @@ use Mamoot\CardMarket\CardMarketException;
  */
 final class HttpClientNotConfiguredException extends \RuntimeException implements CardMarketException
 {
-    public function __construct(
-        string $message = '',
-        int $code = 0,
-        \Throwable $previous = null
-    ) {
-        parent::__construct('You need to provide "access_secret", "access_token", "app_secret" and "app_token" to create a correct HttpClient.', $code, $previous);
+    public function __construct()
+    {
+        parent::__construct('You need to provide "access_secret", "access_token", "app_secret" and "app_token" to create a correct HttpClient.');
     }
 }
