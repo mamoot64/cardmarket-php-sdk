@@ -139,13 +139,13 @@ abstract class HttpCaller
           case 400:
             throw HttpClientException::badRequest($response);
           case 401:
-            throw HttpClientException::unauthorized();
+            throw HttpClientException::unauthorized($response);
           case 403:
-            throw HttpClientException::forbidden();
+            throw HttpClientException::forbidden($response);
           case 404:
-            throw HttpClientException::notFound();
+            throw HttpClientException::notFound($response);
           case 429:
-            throw HttpClientException::tooManyRequests();
+            throw HttpClientException::tooManyRequests($response);
           case 500 <= $statusCode:
             throw new HttpServerException($statusCode);
           default:
