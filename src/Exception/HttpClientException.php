@@ -13,13 +13,18 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  *
  * @author Nicolas Perussel <nicolas.perussel@gmail.com>
  *
- * Inspired by the work of Tobias ... on Mailgun PHP SDK.
- *
  */
 final class HttpClientException extends \RuntimeException implements CardMarketException
 {
-    public function __construct(string $message, int $code)
+
+    /**
+     * @var \Symfony\Contracts\HttpClient\ResponseInterface
+     */
+    private $response;
+
+    public function __construct(string $message, int $code, ResponseInterface $response)
     {
+        $this->response = $response;
         parent::__construct($message, $code);
     }
 
@@ -36,26 +41,31 @@ final class HttpClientException extends \RuntimeException implements CardMarketE
 
         $message = sprintf("The parameters passed to the API were invalid. Check your inputs!\n\n%s", $message);
 
-        return new self($message, 400);
+        return new self($message, 400, $response);
     }
 
-    public static function unauthorized()
+    public static function unauthorized(ResponseInterface $response)
     {
-        return new self('Authentication or authorization fails during your request, e.g. your Authorization (signature) is not correct.', 401);
+        return new self('Authentication or authorization fails during your request, e.g. your Authorization (signature) is not correct.', 401, $response);
     }
 
-    public static function forbidden()
+    public static function forbidden(ResponseInterface $response)
     {
-        return new self('You try to access a forbidden resource. Check your Authorization Header.', 403);
+        return new self('You try to access a forbidden resource. Check your Authorization Header.', 403, $response);
     }
 
-    public static function notFound()
+    public static function notFound(ResponseInterface $response)
     {
-        return new self('The endpoint you have tried to access does not exist.', 404);
+        return new self('The endpoint you have tried to access does not exist.', 404, $response);
     }
 
-    public static function tooManyRequests()
+    public static function tooManyRequests(ResponseInterface $response)
     {
-        return new self('You have reached your maximum calls per day.', 429);
+        return new self('You have reached your maximum calls per day.', 429, $response);
+    }
+
+    public function getResponse(): ResponseInterface
+    {
+        return $this->response;
     }
 }
