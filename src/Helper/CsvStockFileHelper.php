@@ -28,11 +28,7 @@ final class CsvStockFileHelper
      */
     public function storeStockFileOnDisk(string $pathToSave): bool
     {
-        if (! $csvContent = self::decodeAndUnzipContent($this->stockFileContent)) {
-            throw new \RuntimeException("CSV content can't be decoded and unzip.");
-        }
-
-        return self::saveFileOnDisk($csvContent, $pathToSave);
+        return self::saveFileOnDisk(self::decodeAndUnzipContent($this->stockFileContent), $pathToSave);
     }
 
     /**
@@ -57,6 +53,14 @@ final class CsvStockFileHelper
      */
     private function decodeAndUnzipContent(string $stockFileContent): string
     {
-        return gzdecode(base64_decode($stockFileContent));
+        if (!$decodedContent = base64_decode($stockFileContent)) {
+            throw new \RuntimeException("CSV content can't be decoded.");
+        }
+
+        if (!$unzipContent = gzdecode($decodedContent)) {
+            throw new \RuntimeException("CSV content can't be unzip.");
+        }
+
+        return $unzipContent;
     }
 }
