@@ -95,6 +95,24 @@ $cardmarket->pokemon()->getOrderedExpansions();
 
 > You can't redefined default resources
 
+### Get your CSV stock files
+
+Get your MTG CSV file from CardMarket into your disk   
+
+```php
+// 1 = (gameId) Magic The Gathering
+$magicStock = $cardmarket->stock()->getStockFile(1);
+```
+
+Now, you can use the Helper `CsvStockFileHelper` to store data on your disk.
+   
+```php
+use \Mamoot\CardMarket\Helper\CsvStockFileHelper;
+
+$stockHelper = new CsvStockFileHelper($magicStock['stock']);
+$stockHelper->storeStockFileOnDisk("./mtg.csv");
+```
+
 ### Execute test suite
 
 If you want to run the tests you should run the following commands: 
