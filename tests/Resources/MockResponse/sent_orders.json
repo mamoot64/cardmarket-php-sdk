@@ -1,0 +1,265 @@
+{
+  "order": [
+    {
+      "idOrder": 200541967,
+      "isBuyer": false,
+      "seller": {
+        "idUser": 787508,
+        "username": "test",
+        "isCommercial": 0,
+        "reputation": 1,
+        "sellCount": 232,
+        "onVacation": false,
+        "name": {
+          "firstName": "Nicolas"
+        },
+        "address": {
+          "name": "NAME",
+          "extra": null,
+          "street": "ADDRESS STREE",
+          "zip": "POSTAL CODE",
+          "city": "COUNTRY",
+          "country": "FR"
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2019-04-14T17:08:22+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 1590,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "buyer": {
+        "idUser": 68008,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 1,
+        "sellCount": 1359,
+        "onVacation": false,
+        "name": {
+          "firstName": "FIRST NAME"
+        },
+        "address": {
+          "name": "NAME",
+          "extra": null,
+          "street": "ADDRESS STREE",
+          "zip": "POSTAL CODE",
+          "city": "COUNTRY",
+          "country": "FR"
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2011-12-17T18:26:44+0100",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 1,
+        "shipsFast": 0,
+        "soldItems": 3410,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "state": {
+        "state": "sent",
+        "dateBought": "2020-10-05T11:27:36+0200",
+        "datePaid": "2020-10-05T11:27:37+0200",
+        "dateSent": "2020-10-05T14:04:48+0200"
+      },
+      "shippingMethod": {
+        "idShippingMethod": 11717093,
+        "name": "Lettre Prioritaire",
+        "price": 1.46,
+        "idCurrency": 1,
+        "currencyCode": "EUR",
+        "isLetter": true,
+        "isInsured": false
+      },
+      "trackingNumber": "",
+      "temporaryEmail": "",
+      "isPresale": false,
+      "shippingAddress": {
+          "name": "NAME",
+          "extra": null,
+          "street": "ADDRESS STREE",
+          "zip": "POSTAL CODE",
+          "city": "COUNTRY",
+          "country": "FR"
+      },
+      "note": "",
+      "articleCount": 1,
+      "article": [
+        {
+          "idArticle": 778272234,
+          "idProduct": 455028,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte neuve (sortie de booster) envoi rapide et soigné",
+          "price": 7.5,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 1,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 1,
+            "image": "//static.cardmarket.com/img/4dd4b2b7e528dcdda600cd6207161033/items/1/IKO/455028.jpg",
+            "enName": "Zagoth Triome",
+            "locName": "Triome de Zagoth",
+            "expansion": "Ikoria: Lair of Behemoths",
+            "nr": "259",
+            "expIcon": 539,
+            "rarity": "Rare"
+          },
+          "condition": "NM",
+          "isFoil": true,
+          "isSigned": false,
+          "isPlayset": false,
+          "isAltered": false
+        }
+      ],
+      "articleValue": 7.5,
+      "totalValue": 8.96,
+      "idCurrency": 1,
+      "currencyCode": "EUR"
+    },
+    {
+      "idOrder": 200478004,
+      "isBuyer": false,
+      "seller": {
+        "idUser": 787508,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 1,
+        "sellCount": 232,
+        "onVacation": false,
+        "name": {
+          "firstName": "Nicolas"
+        },
+        "address": {
+          "name": "NAME",
+          "extra": null,
+          "street": "ADDRESS STREE",
+          "zip": "POSTAL CODE",
+          "city": "COUNTRY",
+          "country": "FR"
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2019-04-14T17:08:22+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 1590,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "buyer": {
+        "idUser": 1605814,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 0,
+        "sellCount": 4,
+        "onVacation": false,
+        "name": {
+          "firstName": "FIRSTNAME"
+        },
+        "address": {
+            "name": "NAME",
+            "extra": null,
+            "street": "ADDRESS STREE",
+            "zip": "POSTAL CODE",
+            "city": "COUNTRY",
+            "country": "FR"
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2016-01-06T11:04:33+0100",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 1,
+        "shipsFast": 0,
+        "soldItems": 4,
+        "avgShippingTime": 2,
+        "riskGroup": 1,
+        "lossPercentage": "0 - 2%"
+      },
+      "state": {
+        "state": "sent",
+        "dateBought": "2020-10-04T09:23:58+0200",
+        "datePaid": "2020-10-04T09:28:46+0200",
+        "dateSent": "2020-10-05T09:35:48+0200"
+      },
+      "shippingMethod": {
+        "idShippingMethod": 11717093,
+        "name": "Lettre Prioritaire",
+        "price": 1.46,
+        "idCurrency": 1,
+        "currencyCode": "EUR",
+        "isLetter": true,
+        "isInsured": false
+      },
+      "trackingNumber": "",
+      "temporaryEmail": "",
+      "isPresale": false,
+      "shippingAddress": {
+          "name": "NAME",
+          "extra": null,
+          "street": "ADDRESS STREE",
+          "zip": "POSTAL CODE",
+          "city": "COUNTRY",
+          "country": "FR"
+      },
+      "note": "",
+      "articleCount": 2,
+      "article": [
+        {
+          "idArticle": 967406490,
+          "idProduct": 441618,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte neuve, envoi rapide et soigné",
+          "price": 0.2,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 2,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 3,
+            "image": "//static.cardmarket.com/img/e74883cd060857483d1046145ad78f2d/items/5/IGAS/441618.jpg",
+            "enName": "Unchained Twins - Sarama",
+            "locName": "Jumelles Désenchaînées - Sarama",
+            "expansion": "Ignition Assault",
+            "nr": "SE4",
+            "expIcon": 3,
+            "rarity": "Super Rare"
+          },
+          "condition": "NM",
+          "isSigned": false,
+          "isFirstEd": false,
+          "isAltered": false
+        }
+      ],
+      "articleValue": 0.4,
+      "totalValue": 1.86,
+      "idCurrency": 1,
+      "currencyCode": "EUR"
+    }
+  ],
+  "api": {
+    "request-limit-max": "5000",
+    "request-limit-count": "20"
+  }
+}
