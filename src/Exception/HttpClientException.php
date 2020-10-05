@@ -28,7 +28,7 @@ final class HttpClientException extends \RuntimeException implements CardMarketE
         parent::__construct($message, $code);
     }
 
-    public static function badRequest(ResponseInterface $response)
+    public static function badRequest(ResponseInterface $response): self
     {
         $body = $response->getContent(false);
 
@@ -44,22 +44,22 @@ final class HttpClientException extends \RuntimeException implements CardMarketE
         return new self($message, 400, $response);
     }
 
-    public static function unauthorized(ResponseInterface $response)
+    public static function unauthorized(ResponseInterface $response): self
     {
         return new self('Authentication or authorization fails during your request, e.g. your Authorization (signature) is not correct.', 401, $response);
     }
 
-    public static function forbidden(ResponseInterface $response)
+    public static function forbidden(ResponseInterface $response): self
     {
         return new self('You try to access a forbidden resource. Check your Authorization Header.', 403, $response);
     }
 
-    public static function notFound(ResponseInterface $response)
+    public static function notFound(ResponseInterface $response): self
     {
         return new self('The endpoint you have tried to access does not exist.', 404, $response);
     }
 
-    public static function tooManyRequests(ResponseInterface $response)
+    public static function tooManyRequests(ResponseInterface $response): self
     {
         return new self('You have reached your maximum calls per day.', 429, $response);
     }
