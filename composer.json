@@ -25,7 +25,7 @@
         "spatie/macroable": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.4",
         "symfony/var-dumper": "^5.1",
         "friendsofphp/php-cs-fixer": "^2.16",
         "dg/bypass-finals": "^1.2",
