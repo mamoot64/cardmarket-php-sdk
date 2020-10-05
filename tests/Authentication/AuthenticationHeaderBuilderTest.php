@@ -9,43 +9,66 @@ use PHPUnit\Framework\TestCase;
 
 final class AuthenticationHeaderBuilderTest extends TestCase
 {
-    private $authenticationHeaderBuilderWithQueryParams;
 
-    private $authenticationHeaderBuilderWithoutQueryParams;
+    /**
+     * @var HttpClientCreator
+     */
+    private $httpClientCreator;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $httpClientCreator = new HttpClientCreator();
-        $httpClientCreator->setAccessSecret('access_secret')
-      ->setAccessToken('access_token')
-      ->setApplicationSecret('app_secret')
-      ->setApplicationToken('app_token');
-
-        $this->authenticationHeaderBuilderWithQueryParams = self::buildAuthenticationBuilder(
-      $httpClientCreator,
-      HttpClientCreator::API_URL . '/users/karmacrow/articles?start=0&maxResults=10'
-    );
-
-        $this->authenticationHeaderBuilderWithoutQueryParams = self::buildAuthenticationBuilder(
-      $httpClientCreator,
-      HttpClientCreator::API_URL . '/users/karmacrow/articles'
-    );
+        $this->httpClientCreator = new HttpClientCreator();
+        $this->httpClientCreator->setAccessSecret('access_secret')
+            ->setAccessToken('access_token')
+            ->setApplicationSecret('app_secret')
+            ->setApplicationToken('app_token');
     }
 
-    public function testAuthenticationHeaderBuilder()
+    /**
+     * @dataProvider authenticationHeaderBuilderProvider
+     */
+    public function testAuthenticationHeaderBuilder(string $expected, string $url , string $method): void
     {
-        $this->assertSame('OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", start="0", maxResults="10", oauth_signature="95ULTYYDOl+t35olPzaGGymppuE="',
-      $this->authenticationHeaderBuilderWithQueryParams->getAuthorisationHeaderValue());
-
-        $this->assertSame('OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", oauth_signature="+EXDfr5yax3WoXLq+NNQgvxpHME="',
-      $this->authenticationHeaderBuilderWithoutQueryParams->getAuthorisationHeaderValue());
+        $this->assertSame(
+            $expected,
+            $this->buildAuthenticationBuilder($this->httpClientCreator, $url, $method)->getAuthorisationHeaderValue()
+        );
     }
 
-    private function buildAuthenticationBuilder(HttpClientCreator $httpClientCreator, string $url): AuthenticationHeaderBuilder
+    public function authenticationHeaderBuilderProvider(): array
     {
-        $authenticationHeaderBuilder = new AuthenticationHeaderBuilder($httpClientCreator, $url, 'GET');
+        return [
+            'with query params' => [
+                'OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", start="0", maxResults="10", oauth_signature="95ULTYYDOl+t35olPzaGGymppuE="',
+                HttpClientCreator::API_URL . '/users/karmacrow/articles?start=0&maxResults=10',
+                'GET',
+            ],
+            'with query params and lower case method' => [
+                'OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", start="0", maxResults="10", oauth_signature="95ULTYYDOl+t35olPzaGGymppuE="',
+                HttpClientCreator::API_URL . '/users/karmacrow/articles?start=0&maxResults=10',
+                'get',
+            ],
+            'without query params' => [
+                'OAuth realm="https://api.cardmarket.com/ws/v2.0/output.json/users/karmacrow/articles", oauth_consumer_key="app_token", oauth_token="access_token", oauth_nonce="5d676828e6fe7", oauth_timestamp="1567057960", oauth_signature_method="HMAC-SHA1", oauth_version="1.0", oauth_signature="+EXDfr5yax3WoXLq+NNQgvxpHME="',
+                HttpClientCreator::API_URL . '/users/karmacrow/articles',
+                'GET',
+            ],
+        ];
+    }
+
+    public function testAuthenticationHeaderBuilderWithMalformedUrlShouldFail(): void
+    {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('String "https://///example.com" is malformed and can\'t be parsed.');
+
+        new AuthenticationHeaderBuilder($this->httpClientCreator, 'https://///example.com');
+    }
+
+    private function buildAuthenticationBuilder(HttpClientCreator $httpClientCreator, string $url, string $method): AuthenticationHeaderBuilder
+    {
+        $authenticationHeaderBuilder = new AuthenticationHeaderBuilder($httpClientCreator, $url, $method);
 
         // Use Reflection to set immutable timestamp & nonce
         $reflection = new \ReflectionProperty(AuthenticationHeaderBuilder::class, 'timestamp');
