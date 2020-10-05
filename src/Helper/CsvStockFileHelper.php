@@ -12,6 +12,9 @@ namespace Mamoot\CardMarket\Helper;
  */
 final class CsvStockFileHelper
 {
+    /**
+     * @var string
+     */
     private $stockFileContent;
 
     public function __construct(string $stockFileContent)
