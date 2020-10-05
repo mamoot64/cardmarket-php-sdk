@@ -1,0 +1,336 @@
+{
+  "order": [
+    {
+      "idOrder": 23817396,
+      "isBuyer": false,
+      "seller": {
+        "idUser": 787508,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 1,
+        "sellCount": 232,
+        "onVacation": false,
+        "name": {
+          "firstName": "Nicolas"
+        },
+        "address": {
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2019-04-14T17:08:22+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 1590,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "buyer": {
+        "idUser": 1749342,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 3,
+        "sellCount": 33,
+        "onVacation": true,
+        "name": {
+          "firstName": "Julien"
+        },
+        "address": {
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2018-06-10T12:46:21+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 52,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "state": {
+        "state": "evaluated",
+        "dateBought": "2020-06-04T08:21:31+0200",
+        "datePaid": "2020-06-04T08:22:35+0200",
+        "dateSent": "2020-06-04T16:50:24+0200",
+        "dateReceived": "2020-06-10T11:47:31+0200"
+      },
+      "shippingMethod": {
+        "idShippingMethod": 11717113,
+        "name": "Lettre Prioritaire + Sticker Suivi",
+        "price": 3.27,
+        "idCurrency": 1,
+        "currencyCode": "EUR",
+        "isLetter": true,
+        "isInsured": true
+      },
+      "trackingNumber": "",
+      "temporaryEmail": "",
+      "isPresale": false,
+      "shippingAddress": {
+      },
+      "note": "",
+      "articleCount": 7,
+      "article": [
+        {
+          "idArticle": 805156799,
+          "idProduct": 458223,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte neuve (sortie de booster) envoi rapide et soigné",
+          "price": 0.1,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 4,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 6,
+            "image": "//static.cardmarket.com/img/98ce0e5f18ff873c750cd096cf0979ff/items/51/SWSH2/458223.jpg",
+            "enName": "Sonia (V.1)",
+            "locName": "Sonia (V.1)",
+            "expansion": "Rebel Clash",
+            "nr": "167",
+            "expIcon": 556,
+            "rarity": "Uncommon"
+          },
+          "condition": "NM",
+          "isFoil": false,
+          "isSigned": false,
+          "isFirstEd": false,
+          "isPlayset": false,
+          "isAltered": false
+        },
+        {
+          "idArticle": 782276079,
+          "idProduct": 456538,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte neuve (sortie de booster) envoi rapide et soigné",
+          "price": 0.3,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 3,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 6,
+            "image": "//static.cardmarket.com/img/d8c179f129a1301784ab54c0699b74ba/items/51/SWSH2/456538.jpg",
+            "enName": "Tool Scrapper (V.1)",
+            "locName": "Arrache-Outil (V.1)",
+            "expansion": "Rebel Clash",
+            "nr": "168",
+            "expIcon": 556,
+            "rarity": "Uncommon"
+          },
+          "condition": "NM",
+          "isFoil": false,
+          "isSigned": false,
+          "isFirstEd": false,
+          "isPlayset": false,
+          "isAltered": false
+        }
+      ],
+      "articleValue": 1.3,
+      "totalValue": 4.57,
+      "idCurrency": 1,
+      "currencyCode": "EUR",
+      "evaluation": {
+        "evaluationGrade": 1,
+        "itemDescription": 1,
+        "packaging": 1,
+        "comment": ""
+      }
+    },
+    {
+      "idOrder": 23823984,
+      "isBuyer": false,
+      "seller": {
+        "idUser": 787508,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 1,
+        "sellCount": 232,
+        "onVacation": false,
+        "name": {
+          "firstName": "Nicolas"
+        },
+        "address": {
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2019-04-14T17:08:22+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 1590,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "buyer": {
+        "idUser": 1749342,
+        "username": "USERNAME",
+        "isCommercial": 0,
+        "reputation": 3,
+        "sellCount": 33,
+        "onVacation": true,
+        "name": {
+          "firstName": "Julien"
+        },
+        "address": {
+        },
+        "phone": "",
+        "email": "",
+        "vat": "",
+        "registrationDate": "2018-06-10T12:46:21+0200",
+        "isSeller": true,
+        "legalInformation": "",
+        "unsentShipments": 0,
+        "shipsFast": 0,
+        "soldItems": 52,
+        "avgShippingTime": 1,
+        "riskGroup": 0,
+        "lossPercentage": "0 - 2%"
+      },
+      "state": {
+        "state": "evaluated",
+        "dateBought": "2020-06-04T08:09:49+0200",
+        "datePaid": "2020-06-04T08:10:49+0200",
+        "dateSent": "2020-06-04T16:50:16+0200",
+        "dateReceived": "2020-06-10T11:47:37+0200"
+      },
+      "shippingMethod": {
+        "idShippingMethod": 11717108,
+        "name": "Lettre Prioritaire + Sticker Suivi",
+        "price": 2.11,
+        "idCurrency": 1,
+        "currencyCode": "EUR",
+        "isLetter": true,
+        "isInsured": true
+      },
+      "trackingNumber": "1L02414363047",
+      "temporaryEmail": "",
+      "isPresale": false,
+      "shippingAddress": {
+      },
+      "note": "",
+      "articleCount": 3,
+      "article": [
+        {
+          "idArticle": 777147454,
+          "idProduct": 456453,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte neuve (sortie de booster) envoi rapide et soigné",
+          "price": 7.9,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 1,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 6,
+            "image": "//static.cardmarket.com/img/577d13f77f4a60c295e46d57dc2d6df6/items/51/SWSH2/456453.jpg",
+            "enName": "Boltund V [Electrify | Bolt Storm] (V.1)",
+            "locName": "Boltund V [Electrify | Bolt Storm] (V.1)",
+            "expansion": "Rebel Clash",
+            "nr": "67",
+            "expIcon": 556,
+            "rarity": "Ultra Rare"
+          },
+          "condition": "NM",
+          "isFoil": true,
+          "isSigned": false,
+          "isFirstEd": false,
+          "isPlayset": false,
+          "isAltered": false
+        },
+        {
+          "idArticle": 778005019,
+          "idProduct": 458163,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte holo (sortie de booster) envoi rapide et soigné",
+          "price": 8.5,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 1,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 6,
+            "image": "//static.cardmarket.com/img/de83dd15b81a07c3b480ba3d75fabde4/items/51/SWSH2/458163.jpg",
+            "enName": "Boss's Orders (V.1)",
+            "locName": "Boss's Orders (V.1)",
+            "expansion": "Rebel Clash",
+            "nr": "154",
+            "expIcon": 556,
+            "rarity": "Rare Holo"
+          },
+          "condition": "NM",
+          "isFoil": true,
+          "isSigned": false,
+          "isFirstEd": false,
+          "isPlayset": false,
+          "isAltered": false
+        },
+        {
+          "idArticle": 796635604,
+          "idProduct": 458163,
+          "language": {
+            "idLanguage": 2,
+            "languageName": "French"
+          },
+          "comments": "carte reverse (sortie de booster) envoi rapide et soigné",
+          "price": 8.5,
+          "idCurrency": 1,
+          "currencyCode": "EUR",
+          "count": 1,
+          "inShoppingCart": false,
+          "product": {
+            "idGame": 6,
+            "image": "//static.cardmarket.com/img/de83dd15b81a07c3b480ba3d75fabde4/items/51/SWSH2/458163.jpg",
+            "enName": "Boss's Orders (V.1)",
+            "locName": "Boss's Orders (V.1)",
+            "expansion": "Rebel Clash",
+            "nr": "154",
+            "expIcon": 556,
+            "rarity": "Rare Holo"
+          },
+          "condition": "NM",
+          "isFoil": true,
+          "isSigned": false,
+          "isFirstEd": false,
+          "isPlayset": false,
+          "isAltered": false
+        }
+      ],
+      "articleValue": 24.9,
+      "totalValue": 27.01,
+      "idCurrency": 1,
+      "currencyCode": "EUR",
+      "evaluation": {
+        "evaluationGrade": 1,
+        "itemDescription": 1,
+        "packaging": 1,
+        "comment": ""
+      }
+    }
+  ],
+  "api": {
+    "request-limit-max": "5000",
+    "request-limit-count": "20"
+  }
+}

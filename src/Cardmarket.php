@@ -7,6 +7,7 @@ use Mamoot\CardMarket\HttpClient\HttpClientCreator;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\ExpansionsResource;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\GamesResource;
 use Mamoot\CardMarket\Resources\MarketPlaceInformation\ProductsResource;
+use Mamoot\CardMarket\Resources\OrdersManagement\OrdersResource;
 use Mamoot\CardMarket\Resources\StockManagement\StockInShoppingCartsResource;
 use Mamoot\CardMarket\Resources\StockManagement\StockResource;
 use Spatie\Macroable\Macroable;
@@ -55,6 +56,11 @@ class Cardmarket
     public function stockInShoppingCarts(): StockInShoppingCartsResource
     {
         return new StockInShoppingCartsResource($this->httpClientCreator);
+    }
+
+    public function orders(): OrdersResource
+    {
+        return new OrdersResource($this->httpClientCreator);
     }
 
     /**
