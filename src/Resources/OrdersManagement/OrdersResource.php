@@ -25,6 +25,20 @@ final class OrdersResource extends HttpCaller
     public const ORDER_STATE_CANCELLED = "cancelled";
 
     /**
+     * Rerieve all filtered orders.
+     *
+     * @param string $actor
+     * @param string $state
+     * @param int $start
+     *
+     * @return array
+     */
+    public function getOrders(string $actor, string $state, int $start = 1)
+    {
+        return $this->get(sprintf('/orders/%s/%s/%d', $actor, $state, $start));
+    }
+
+    /**
      * Returns all send orders for the current seller.
      *
      * @return array
