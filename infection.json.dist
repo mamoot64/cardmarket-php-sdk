@@ -1,0 +1,18 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "timeout": 2000,
+    "logs": {
+        "text": ".infection/infection.log",
+        "summary": ".infection/summary.log",
+        "json": ".infection/infection-log.json",
+        "perMutator": ".infection/per-mutator.md"
+    },
+    "mutators": {
+        "@default": true
+    },
+    "testFramework":"phpunit"
+}
