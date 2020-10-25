@@ -40,6 +40,8 @@ abstract class HttpCaller
     }
 
     /**
+     * Perform GET request.
+     *
      * @param string $uri
      *
      * @return array
@@ -64,6 +66,34 @@ abstract class HttpCaller
     }
 
     protected function put(string $uri, array $content)
+    {
+        $url = HttpClientCreator::API_URL . $uri;
+
+        try {
+            $response = $this->httpClient->request('PUT', $url, [
+              'headers' => self::getAuthorizationHeader($url, 'PUT'),
+              'body' => json_encode($content),
+            ]);
+
+            return self::processJsonResponse($response);
+        } catch (UnknownErrorException | DecodingExceptionInterface | HttpExceptionInterface | TransportExceptionInterface $exception) {
+            throw $exception;
+        }
+    }
+
+    /**
+     * Perform PUT request.
+     *
+     * @param string $uri
+     * @param array $content
+     *
+     * @return array
+     * @throws \Mamoot\CardMarket\Exception\UnknownErrorException
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
+    protected function put(string $uri, array $content): array
     {
         $url = HttpClientCreator::API_URL . $uri;
 
