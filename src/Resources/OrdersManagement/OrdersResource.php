@@ -61,5 +61,4 @@ final class OrdersResource extends HttpCaller
     {
         return $this->get(sprintf('/orders/%s/%s/%d', self::ORDER_SELLER, self::ORDER_STATE_RECEIVED, $start));
     }
-
 }

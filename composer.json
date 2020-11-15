@@ -32,8 +32,8 @@
         "phpstan/phpstan": "^0.12"
     },
     "scripts": {
-        "lint": "php-cs-fixer fix ./src --rules=@PSR2 --diff --dry-run",
-        "lint-fix": "php-cs-fixer fix ./src --rules=@PSR2",
+        "lint": "./bin/php-cs-fixer fix ./src --rules=@PSR2 --diff --dry-run",
+        "lint-fix": "./bin/php-cs-fixer fix ./src --rules=@PSR2",
         "test": "vendor/bin/phpunit",
         "stan": "vendor/bin/phpstan analyse",
         "test-coverage": "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml",
