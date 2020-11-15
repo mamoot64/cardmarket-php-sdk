@@ -65,22 +65,6 @@ abstract class HttpCaller
         }
     }
 
-    protected function put(string $uri, array $content)
-    {
-        $url = HttpClientCreator::API_URL . $uri;
-
-        try {
-            $response = $this->httpClient->request('PUT', $url, [
-              'headers' => self::getAuthorizationHeader($url, 'PUT'),
-              'body' => json_encode($content),
-            ]);
-
-            return self::processJsonResponse($response);
-        } catch (UnknownErrorException | DecodingExceptionInterface | HttpExceptionInterface | TransportExceptionInterface $exception) {
-            throw $exception;
-        }
-    }
-
     /**
      * Perform PUT request.
      *
